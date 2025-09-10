@@ -52,7 +52,7 @@ export function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-center items-start px-8 md:px-16 lg:px-24 bg-black text-white overflow-hidden grid-pattern noise-texture"
     >
-      {/* <ParticlesBackground /> */}
+      <ParticlesBackground />
 
       {/* Background gradient overlay */}
       <div
