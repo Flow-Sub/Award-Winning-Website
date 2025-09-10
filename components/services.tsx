@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -98,6 +98,7 @@ export function Services() {
   const cursorY = useMotionValue(0);
   const smoothX = useSpring(cursorX, { stiffness: 300, damping: 40 });
   const smoothY = useSpring(cursorY, { stiffness: 300, damping: 40 });
+  const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const updateScreen = () => {
@@ -109,9 +110,34 @@ export function Services() {
   }, []);
 
   const onMouseTrack = (e: React.MouseEvent) => {
-    cursorX.set(e.clientX);
-    cursorY.set(e.clientY);
-  };
+  cursorX.set(e.clientX);
+  cursorY.set(e.clientY);
+
+  let isHoveringRightHalf = false;
+  let hoveredService: Service | null = null;
+
+  serviceRefs.current.forEach((ref, index) => {
+    if (ref) {
+      const rect = ref.getBoundingClientRect();
+      const rightHalfX = rect.left + rect.width / 2;
+      if (
+        e.clientX >= rightHalfX &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      ) {
+        isHoveringRightHalf = true;
+        hoveredService = services[index];
+      }
+    }
+  });
+
+  if (isHoveringRightHalf && hoveredService) {
+    setFocusedItem(hoveredService);
+  } else {
+    setFocusedItem(null);
+  }
+};
 
   const onHoverActivate = (item: Service) => {
     setFocusedItem(item);
@@ -155,10 +181,12 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={index}
+              ref={(el) => void (serviceRefs.current[index] = el)}
               className={`group bg-black/90 hover:bg-white/[0.06] transition-all duration-700 cursor-pointer scroll-reveal-scale relative overflow-hidden will-change-transform will-change-opacity`}
-              style={{ animationDelay: `${index * 0.09}s` }}
-              onMouseEnter={() => onHoverActivate(service)}
-            >
+    style={{ animationDelay: `${index * 0.09}s` }}
+  >
+              {/* onMouseEnter={() => onHoverActivate(service)} */}
+            {/* > */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 transition-[opacity,transform] duration-700 ease-out opacity-0 group-hover:opacity-100"

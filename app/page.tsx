@@ -1,3 +1,5 @@
+"use client";
+
 import { Hero } from "@/components/hero"
 import { Navigation } from "@/components/navigation"
 import { Services } from "@/components/services"
@@ -13,40 +15,64 @@ export default function Home() {
       <Navigation />
       <Hero />
 
-      <section className="py-32 px-8 md:px-16 lg:px-24 bg-black relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center scroll-reveal">
-            <div>
-              <h2 className="text-6xl md:text-8xl font-serif font-light mb-8 gradient-text">
-                AWARD
-                <br />
-                WINNING
-              </h2>
-              <p className="text-lg opacity-80 font-mono tracking-wide leading-relaxed">
-                We create digital experiences that push boundaries and set new standards in the industry.
-              </p>
+      <section className="py-32 px-8 md:px-16 lg:px-24 bg-black relative overflow-hidden">
+      <style jsx>{`
+        @keyframes runningGradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(to right, rgba(88, 28, 135, 0.5), rgba(30, 58, 138, 0.5), transparent);
+          animation: runningGradient 8s ease-in-out infinite;
+          z-index: 0;
+        }
+      `}</style>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center scroll-reveal">
+          <div>
+            <h2 className="text-6xl md:text-8xl font-serif font-light mb-8 gradient-text">
+              AWARD
+              <br />
+              WINNING
+            </h2>
+            <p className="text-lg opacity-80 font-mono tracking-wide leading-relaxed">
+              We create digital experiences that push boundaries and set new standards in the industry.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-8">
+            <div className="glass-effect p-8 rounded-lg scroll-reveal-right">
+              <h3 className="text-2xl font-serif mb-4">150+</h3>
+              <p className="text-sm font-mono opacity-60">PROJECTS COMPLETED</p>
             </div>
-            <div className="grid grid-cols-2 gap-8">
-              <div className="glass-effect p-8 rounded-lg scroll-reveal-right">
-                <h3 className="text-2xl font-serif mb-4">150+</h3>
-                <p className="text-sm font-mono opacity-60">PROJECTS COMPLETED</p>
-              </div>
-              <div className="glass-effect p-8 rounded-lg scroll-reveal-right" style={{ animationDelay: "0.2s" }}>
-                <h3 className="text-2xl font-serif mb-4">50+</h3>
-                <p className="text-sm font-mono opacity-60">HAPPY CLIENTS</p>
-              </div>
-              <div className="glass-effect p-8 rounded-lg scroll-reveal-right" style={{ animationDelay: "0.4s" }}>
-                <h3 className="text-2xl font-serif mb-4">5</h3>
-                <p className="text-sm font-mono opacity-60">YEARS EXPERIENCE</p>
-              </div>
-              <div className="glass-effect p-8 rounded-lg scroll-reveal-right" style={{ animationDelay: "0.6s" }}>
-                <h3 className="text-2xl font-serif mb-4">24/7</h3>
-                <p className="text-sm font-mono opacity-60">SUPPORT</p>
-              </div>
+            <div className="glass-effect p-8 rounded-lg scroll-reveal-right" style={{ animationDelay: "0.2s" }}>
+              <h3 className="text-2xl font-serif mb-4">50+</h3>
+              <p className="text-sm font-mono opacity-60">HAPPY CLIENTS</p>
+            </div>
+            <div className="glass-effect p-8 rounded-lg scroll-reveal-right" style={{ animationDelay: "0.4s" }}>
+              <h3 className="text-2xl font-serif mb-4">5</h3>
+              <p className="text-sm font-mono opacity-60">YEARS EXPERIENCE</p>
+            </div>
+            <div className="glass-effect p-8 rounded-lg scroll-reveal-right" style={{ animationDelay: "0.6s" }}>
+              <h3 className="text-2xl font-serif mb-4">24/7</h3>
+              <p className="text-sm font-mono opacity-60">SUPPORT</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <section className="py-32 px-8 md:px-16 lg:px-24 bg-gradient-to-b from-black to-gray-900 relative">
   <div className="max-w-4xl mx-auto text-center">
