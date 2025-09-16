@@ -1,4 +1,7 @@
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react"
+"use client";
+
+import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import Script from "next/script";
 
 export function Footer() {
   return (
@@ -67,7 +70,16 @@ export function Footer() {
             </a>
           </div>
         </div>
+
+        {/* Omnidimension Web Widget */}
+        {/* <div className="mt-8 text-center">
+          <Script
+            id="omnidimension-web-widget"
+            src="https://backend.omnidim.io/web_widget.js?secret_key=9a151d1752dc236cba44ddda089faeca"
+            strategy="afterInteractive"
+          />
+        </div> */}
       </div>
     </footer>
-  )
+  );
 }

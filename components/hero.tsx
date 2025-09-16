@@ -52,7 +52,7 @@ export function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-center items-start px-8 md:px-16 lg:px-24 bg-black text-white overflow-hidden grid-pattern noise-texture"
     >
-      {/* <ParticlesBackground /> */}
+      <ParticlesBackground />
 
       {/* Background gradient overlay */}
       <div
@@ -88,11 +88,11 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl w-full">
         {/* Navigation elements */}
         <div className="flex justify-between items-center mb-20 scroll-reveal">
-          <div className="text-sm font-mono tracking-wider opacity-60">(ABOUT)</div>
+          <div className="text-sm font-mono tracking-wider opacity-60"></div>
           <div className="text-sm font-mono tracking-wider opacity-60 text-center">
             BUILDING AI-POWERED SOLUTIONS & AUTOMATION
           </div>
-          <div className="text-sm font-mono tracking-wider opacity-60">(CONTACT)</div>
+          <div className="text-sm font-mono tracking-wider opacity-60"></div>
         </div>
 
         {/* Main hero text */}
